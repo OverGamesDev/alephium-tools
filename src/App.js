@@ -22,7 +22,9 @@ function App() {
     try {
       switch (functionName) {
         case 'contractIdFromAddress':
-          result = contractIdFromAddress(inputs[functionName]);
+          const u8int = contractIdFromAddress(inputs[functionName]);
+          const hexString = Array.from(u8int, byte => byte.toString(16).padStart(2, '0')).join('');
+          result = hexString;
           break;
         case 'addressFromContractId':
           result = addressFromContractId(inputs[functionName]);
